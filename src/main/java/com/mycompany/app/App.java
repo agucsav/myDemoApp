@@ -57,7 +57,7 @@ public class App {
 			String input4 = req.queryParams("input4").replaceAll("\\s", "");
 			int input4AsInt = Integer.parseInt(input4);
 
-			int computedValue = App.search(inputList, inputList2, input3AsInt, input4AsInt);
+			int computedValue = App.compute(inputList, inputList2, input3AsInt, input4AsInt);
 			String result = "";
 			if(computedValue == 1)
 				result = "The sum of array1 is greater.";
@@ -89,8 +89,8 @@ public class App {
     }
 
 
-	public static int search(ArrayList<Integer> array1,ArrayList<Integer> array2, int e, int e2) {
-		System.out.println("inside search");
+	public static int compute(ArrayList<Integer> array1,ArrayList<Integer> array2, int e, int e2) {
+		System.out.println("inside compute");
 		if (array1 == null|| array2== null)
 			return -2;
 		

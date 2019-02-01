@@ -36,12 +36,37 @@ public class App {
 				inputList.add(value);
 			}
 			System.out.println(inputList);
+			sc1.close();
 
-			String input2 = req.queryParams("input2").replaceAll("\\s", "");
-			int input2AsInt = Integer.parseInt(input2);
+			String input2 = req.queryParams("input2");
+			java.util.Scanner sc2 = new java.util.Scanner(input2);
+			sc1.useDelimiter("[;\r\n]+");
+			java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+			while (sc2.hasNext()) {
+				int value = Integer.parseInt(sc2.next().replaceAll("\\s", ""));
+				inputList2.add(value);
+			}
+			System.out.println(inputList2);
+			sc2.close();
 
-			boolean result = App.search(inputList, input2AsInt);
+			
+			String input3 = req.queryParams("input3").replaceAll("\\s", "");
+			int input3AsInt = Integer.parseInt(input3);
+			
 
+			String input4 = req.queryParams("input4").replaceAll("\\s", "");
+			int input4AsInt = Integer.parseInt(input4);
+
+			int computedValue = App.search(inputList, inputList2, input3AsInt, input4AsInt);
+			String result = "";
+			if(computedValue == 1)
+				result = "The sum of array1 is greater.";
+			else if(computedValue == -1)
+				result = "The sum of array2 is greater.";
+			else if(computedValue == 0)
+				result = "The sum of arrays are equal.";
+			else
+				result = "One of the array if empty."
 			Map map = new HashMap();
 			map.put("result", result);
 			return new ModelAndView(map, "compute.mustache");
@@ -64,15 +89,44 @@ public class App {
     }
 
 
-	public static boolean search(ArrayList<Integer> array, int e) {
+	public static int search(ArrayList<Integer> array1,ArrayList<Integer> array2, int e, int e2) {
 		System.out.println("inside search");
-		if (array == null)
-			return false;
-
-		for (int elt : array) {
-			if (elt == e)
-				return true;
+		if (array1 == null|| array2== null)
+			return -2;
+		
+		int arraySum1 = 0;
+		int arraySum2 = 0;
+		for (int elt : array1) {
+			if (elt == e) {
+				for (int ele : array1)
+					ele = ele*e;
+				break;
+			}
 		}
-		return false;
+		for (int elt : array1) {
+			arraySum1 = arraySum1 + elt;
+		}
+		
+		
+		for (int elt : array2) {
+			if (elt == e2) {
+				for (int ele : array2)
+					ele = ele*e2;
+				break;
+			}
+		}
+		
+		for (int elt : array2) {
+			arraySum2 = arraySum2 + elt;
+		}
+		
+		if(arraySum1> arraySum2) {
+			return 1;
+			
+		}
+		else if(arraySum1< arraySum2) {
+			return -1;
+		}
+		return 0;
 	}
 }

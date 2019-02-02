@@ -66,7 +66,7 @@ public class App {
 			else if(computedValue == 0)
 				result = "The sum of arrays are equal.";
 			else
-				result = "One of the array if empty."
+				result = "One of the array if empty.";
 			Map map = new HashMap();
 			map.put("result", result);
 			return new ModelAndView(map, "compute.mustache");

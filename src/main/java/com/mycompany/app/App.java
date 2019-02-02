@@ -90,33 +90,39 @@ public class App {
 
 
 	public static int compute(ArrayList<Integer> array1,ArrayList<Integer> array2, int e, int e2) {
-		System.out.println("inside compute");
 		if (array1 == null|| array2== null)
 			return -2;
 		
 		int arraySum1 = 0;
 		int arraySum2 = 0;
-		for (int elt : array1) {
-			if (elt == e) {
-				for (int ele : array1)
-					ele = ele*e;
+		
+
+		for (int index = 0; index < array1.size(); index++) {
+			if (array1.get(index) == e) {
+				for (int ind = 0; ind < array1.size(); ind++) {
+					array1.set(ind, array1.get(ind)*e);
+				}
 				break;
 			}
 		}
+		
 		for (int elt : array1) {
+			
 			arraySum1 = arraySum1 + elt;
 		}
 		
 		
-		for (int elt : array2) {
-			if (elt == e2) {
-				for (int ele : array2)
-					ele = ele*e2;
+		for (int index = 0; index < array2.size(); index++) {
+			if (array2.get(index) == e2) {
+				for (int ind = 0; ind < array2.size(); ind++) {
+					array2.set(ind, array2.get(ind)*e2);
+				}
 				break;
 			}
 		}
 		
 		for (int elt : array2) {
+			
 			arraySum2 = arraySum2 + elt;
 		}
 		
@@ -129,4 +135,5 @@ public class App {
 		}
 		return 0;
 	}
+
 }

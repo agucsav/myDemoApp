@@ -40,7 +40,7 @@ public class App {
 
 			String input2 = req.queryParams("input2");
 			java.util.Scanner sc2 = new java.util.Scanner(input2);
-			sc1.useDelimiter("[;\r\n]+");
+			sc2.useDelimiter("[;\r\n]+");
 			java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
 			while (sc2.hasNext()) {
 				int value = Integer.parseInt(sc2.next().replaceAll("\\s", ""));
